@@ -3,6 +3,8 @@ package com.nopcommerce.demo.pages;
 import com.aventstack.extentreports.Status;
 import com.nopcommerce.demo.customlisteners.CustomListeners;
 import com.nopcommerce.demo.utility.Utility;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
@@ -11,6 +13,8 @@ import org.openqa.selenium.support.FindBy;
  * Created by Jay Vaghani
  */
 public class LoginPage extends Utility {
+
+    private static final Logger log = LogManager.getLogger(LoginPage.class);
 
     @CacheLookup
     @FindBy(xpath = "//h1[contains(text(),'Welcome, Please Sign In!')]")
@@ -37,6 +41,7 @@ public class LoginPage extends Utility {
 
     public String getWelcomeText(){
         String message = getTextFromElement(welcomeText);
+        log.info("Getting text from : " +welcomeText.toString());
         return message;
     }
 
